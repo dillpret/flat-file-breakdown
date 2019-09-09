@@ -1,0 +1,14 @@
+{
+    "record": [
+        {
+            "length": 2,
+            "name": "Record Identifier",
+            "value": "02"
+        },
+        {
+            "length": 16,
+            "name": "Nominated Account Number",
+            "value": "00000011911973"
+        }
+    ]
+}

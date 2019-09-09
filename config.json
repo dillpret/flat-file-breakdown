@@ -1,0 +1,12 @@
+{
+	"record" : [
+		{
+			"name" : "Record Identifier",
+			"length" : 2
+		},
+		{
+			"name" : "Nominated Account Number",
+			"length" : 16
+		}
+	]
+}
