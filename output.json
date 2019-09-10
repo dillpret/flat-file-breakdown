@@ -1,14 +1,92 @@
-{
-    "record": [
-        {
-            "length": 2,
-            "name": "Record Identifier",
-            "value": "02"
-        },
-        {
-            "length": 16,
-            "name": "Nominated Account Number",
-            "value": "00000011911973"
-        }
-    ]
-}
+[
+  {
+    "length": 2,
+    "name": "RecordIdentifier",
+    "value": "'02'"
+  },
+  {
+    "length": 16,
+    "name": "NominatedAccountNumber",
+    "value": "'0000001191197395'"
+  },
+  {
+    "length": 34,
+    "name": "PaymentReferenceNumber",
+    "value": "'0000002186201907230000010000000004'"
+  },
+  {
+    "length": 6,
+    "name": "DestinationBranchCode",
+    "value": "'198765'"
+  },
+  {
+    "length": 16,
+    "name": "DestinationAccountNumber",
+    "value": "'0000001119649382'"
+  },
+  {
+    "length": 12,
+    "name": "Amount",
+    "value": "'000000001000'"
+  },
+  {
+    "length": 8,
+    "name": "ActionDate",
+    "value": "'20190820'"
+  },
+  {
+    "length": 30,
+    "name": "Reference",
+    "value": "'DestinationRef                '"
+  },
+  {
+    "length": 30,
+    "name": "DestinationAccountHolderName",
+    "value": "'PrivateCorp                   '"
+  },
+  {
+    "length": 4,
+    "name": "TransactionType",
+    "value": "'9999'"
+  },
+  {
+    "length": 2,
+    "name": "ClientType",
+    "value": "'01'"
+  },
+  {
+    "length": 16,
+    "name": "ChargesAccountNumber",
+    "value": "'0000001191197395'"
+  },
+  {
+    "length": 2,
+    "name": "ServiceType",
+    "value": "'01'"
+  },
+  {
+    "length": 34,
+    "name": "OriginalPaymentReferenceNumber",
+    "value": "'                                  '"
+  },
+  {
+    "length": 8,
+    "name": "TransactionStatus",
+    "value": "'ACCEPTED'"
+  },
+  {
+    "length": 98,
+    "name": "Reason",
+    "value": "'                                                                                                  '"
+  },
+  {
+    "length": 2,
+    "name": "Filler",
+    "value": "'  '"
+  },
+  {
+    "length": 1,
+    "name": "Newline",
+    "value": "'\\n'"
+  }
+]

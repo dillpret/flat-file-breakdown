@@ -1,12 +1,76 @@
 {
-	"record" : [
+	"ackItem" : [
 		{
-			"name" : "Record Identifier",
+			"name" : "RecordIdentifier",
 			"length" : 2
 		},
 		{
-			"name" : "Nominated Account Number",
+			"name" : "NominatedAccountNumber",
 			"length" : 16
+		},
+		{
+			"name" : "PaymentReferenceNumber",
+			"length" : 34
+		},
+		{
+			"name" : "DestinationBranchCode",
+			"length" : 6
+		},
+		{
+			"name" : "DestinationAccountNumber",
+			"length" : 16
+		},
+		{
+			"name" : "Amount",
+			"length" : 12
+		},
+		{
+			"name" : "ActionDate",
+			"length" : 8
+		},
+		{
+			"name" : "Reference",
+			"length" : 30
+		},
+		{
+			"name" : "DestinationAccountHolderName",
+			"length" : 30
+		},
+		{
+			"name" : "TransactionType",
+			"length" : 4
+		},
+		{
+			"name" : "ClientType",
+			"length" : 2
+		},
+		{
+			"name" : "ChargesAccountNumber",
+			"length" : 16
+		},
+		{
+			"name" : "ServiceType",
+			"length" : 2
+		},
+		{
+			"name" : "OriginalPaymentReferenceNumber",
+			"length" : 34
+		},
+		{
+			"name" : "TransactionStatus",
+			"length" : 8
+		},
+		{
+			"name" : "Reason",
+			"length" : 98
+		},
+		{
+			"name" : "Filler",
+			"length" : 2
+		},
+		{
+			"name" : "Newline",
+			"length" : 1
 		}
 	]
 }
