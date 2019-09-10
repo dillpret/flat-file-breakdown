@@ -2,91 +2,91 @@
   {
     "length": 2,
     "name": "RecordIdentifier",
-    "value": "'02'"
+    "value": "02"
   },
   {
     "length": 16,
     "name": "NominatedAccountNumber",
-    "value": "'0000001191197395'"
+    "value": "0000001191197395"
   },
   {
     "length": 34,
     "name": "PaymentReferenceNumber",
-    "value": "'0000002186201907230000010000000004'"
+    "value": "0000002186201907230000010000000004"
   },
   {
     "length": 6,
     "name": "DestinationBranchCode",
-    "value": "'198765'"
+    "value": "198765"
   },
   {
     "length": 16,
     "name": "DestinationAccountNumber",
-    "value": "'0000001119649382'"
+    "value": "0000001119649382"
   },
   {
     "length": 12,
     "name": "Amount",
-    "value": "'000000001000'"
+    "value": "000000001000"
   },
   {
     "length": 8,
     "name": "ActionDate",
-    "value": "'20190820'"
+    "value": "20190820"
   },
   {
     "length": 30,
     "name": "Reference",
-    "value": "'DestinationRef                '"
+    "value": "DestinationRef                "
   },
   {
     "length": 30,
     "name": "DestinationAccountHolderName",
-    "value": "'PrivateCorp                   '"
+    "value": "PrivateCorp                   "
   },
   {
     "length": 4,
     "name": "TransactionType",
-    "value": "'9999'"
+    "value": "9999"
   },
   {
     "length": 2,
     "name": "ClientType",
-    "value": "'01'"
+    "value": "01"
   },
   {
     "length": 16,
     "name": "ChargesAccountNumber",
-    "value": "'0000001191197395'"
+    "value": "0000001191197395"
   },
   {
     "length": 2,
     "name": "ServiceType",
-    "value": "'01'"
+    "value": "01"
   },
   {
     "length": 34,
     "name": "OriginalPaymentReferenceNumber",
-    "value": "'                                  '"
+    "value": "                                  "
   },
   {
     "length": 8,
     "name": "TransactionStatus",
-    "value": "'ACCEPTED'"
+    "value": "ACCEPTED"
   },
   {
     "length": 98,
     "name": "Reason",
-    "value": "'                                                                                                  '"
+    "value": "                                                                                                  "
   },
   {
     "length": 2,
     "name": "Filler",
-    "value": "'  '"
+    "value": "  "
   },
   {
     "length": 1,
     "name": "Newline",
-    "value": "'\\n'"
+    "value": "\n"
   }
 ]

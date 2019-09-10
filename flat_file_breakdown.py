@@ -34,13 +34,14 @@ def split_flat_file(input_file, config_file, output_file, config_key):
     # Open input file
     flat_file = open(input_file)
 
+    # Read each property of each row, and write to the output CSV
     json_output = copy.deepcopy(config[config_key])
     for row in flat_file:
         i = 0
         for field in json_output:
-            field["value"] = repr(row[i:i+field["length"]])
+            field["value"] = row[i:i+field["length"]]
             i += field["length"]
-        writer.writerow(field["value"] for field in json_output)
+        writer.writerow(repr(field["value"]) for field in json_output)
 
     # Write JSON output
     json.dump(json_output, open("output.json", "w+"), sort_keys=True, indent=2)
