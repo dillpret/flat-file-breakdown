@@ -39,13 +39,20 @@ def split_flat_file(input_file, config_file, output_file, config_key):
     for row in flat_file:
         i = 0
         for field in json_output:
-            field["value"] = row[i:i+field["length"]]
+            field["value"] = row[i:i + field["length"]]
             i += field["length"]
         writer.writerow(repr(field["value"]) for field in json_output)
 
-    # Write JSON output
+    # Write JSON output (of last row)
     json.dump(json_output, open("output.json", "w+"), sort_keys=True, indent=2)
     flat_file.close()
+
+    # Write string literal output (of last row)
+    string_literal_output = open("output.txt", "w+")
+    string_literal_output.write("string " + config_key + " = \"\";\n")
+    for field in json_output:
+        string_literal_output.write("// [" + str(field["length"]) + "] " + field["name"] + "\n")
+        string_literal_output.write(config_key + " += \"" + field["value"] + "\";\n")
 
 
 if __name__ == '__main__':

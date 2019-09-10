@@ -1,0 +1,35 @@
+string ackItem = "";
+// [2] RecordIdentifier
+ackItem += "02";
+// [16] NominatedAccountNumber
+ackItem += "0000001191197395";
+// [34] PaymentReferenceNumber
+ackItem += "0000002186201907230000010000000004";
+// [6] DestinationBranchCode
+ackItem += "198765";
+// [16] DestinationAccountNumber
+ackItem += "0000001119649382";
+// [12] Amount
+ackItem += "000000001000";
+// [8] ActionDate
+ackItem += "20190820";
+// [30] Reference
+ackItem += "DestinationRef                ";
+// [30] DestinationAccountHolderName
+ackItem += "PrivateCorp                   ";
+// [4] TransactionType
+ackItem += "9999";
+// [2] ClientType
+ackItem += "01";
+// [16] ChargesAccountNumber
+ackItem += "0000001191197395";
+// [2] ServiceType
+ackItem += "01";
+// [34] OriginalPaymentReferenceNumber
+ackItem += "                                  ";
+// [8] TransactionStatus
+ackItem += "ACCEPTED";
+// [98] Reason
+ackItem += "                                                                                                  ";
+// [2] Filler
+ackItem += "  ";

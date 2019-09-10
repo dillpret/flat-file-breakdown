@@ -83,10 +83,5 @@
     "length": 2,
     "name": "Filler",
     "value": "  "
-  },
-  {
-    "length": 1,
-    "name": "Newline",
-    "value": "\n"
   }
 ]
