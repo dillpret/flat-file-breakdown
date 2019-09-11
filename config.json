@@ -10,7 +10,7 @@
 		},
 		{
 			"name" : "FileSequenceNumber",
-			"length" : 2
+			"length" : 24
 		},
 		{
 			"name" : "FileType",
@@ -23,6 +23,10 @@
 		{
 			"name" : "ChargesAccountNumber",
 			"length" : 16
+		},
+		{
+			"name" : "StatementNarrative",
+			"length" : 30
 		},
 		{
 			"name" : "Filler",
@@ -119,6 +123,10 @@
 		{
 			"name" : "TotalValueOfAcceptedTransactions",
 			"length" : 18
+		},
+		{
+			"name" : "TotalNumberOfTransactionsInOriginalFile",
+			"length" : 8
 		},
 		{
 			"name" : "TotalValueOfTransactionsInOriginalFile",
