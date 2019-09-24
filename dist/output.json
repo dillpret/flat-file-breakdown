@@ -2,11 +2,11 @@
   {
     "length": 5,
     "name": "Field1",
-    "value": ""
+    "value": "abcde"
   },
   {
     "length": 3,
     "name": "Field2",
-    "value": ""
+    "value": "123"
   }
 ]

@@ -1,5 +1,5 @@
 string test = "";
 // [5] Field1
-test += "";
+test += "abcde";
 // [3] Field2
-test += "";
+test += "123";

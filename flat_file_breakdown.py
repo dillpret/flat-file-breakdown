@@ -38,6 +38,7 @@ def parse():
     
     split = split_flat_file(input_text)
 
+    write_friendly(split)
     write_json(split)
     write_csv(split)
     write_string_literal(split)
@@ -58,7 +59,17 @@ def split_row(flat_row):
         field["value"] = flat_row[i:i + field["length"]]
         i += field["length"]
     return split_row
-    
+
+def write_friendly(row_dictionaries):
+    friendly_output_box.delete(1.0, tk.END)
+    i = 0
+    for dict in row_dictionaries:
+        friendly_output_box.insert(tk.INSERT, "\n================== ROW " + str(i) + " ==================\n")
+        for field in dict:
+            friendly_string = field["name"] + ": " + field["value"] + "\n"
+            friendly_output_box.insert(tk.INSERT, friendly_string)
+        i+=1
+
 def write_csv(row_dictionaries):
     """Write a CSV representation to a file and the GUI."""
     # Open output csv file
@@ -145,6 +156,7 @@ output_tabs.grid(row=2, columnspan=3, sticky=STICK_ALL_SIDES)
 output_tabs.grid_rowconfigure(0, weight=1)
 output_tabs.grid_columnconfigure(0, weight=1)
 
+friendly_output_box = create_tab("Friendly")
 string_output_box = create_tab("String")
 csv_output_box = create_tab("CSV")
 json_output_box = create_tab("JSON")
