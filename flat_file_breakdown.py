@@ -32,6 +32,8 @@ else:
     }
     json.dump(config, open(config_file, "w+"), sort_keys=True, indent=2)
 
+unsaved_config_name = "New"
+unsaved_config = copy.deepcopy(config)
 
 def parse():
     input_text = flat_input_box.get(1.0, tk.END)
@@ -113,18 +115,87 @@ def write_string_literal(row_dictionaries):
         string_output_box.delete(1.0, tk.END)
         string_output_box.insert(1.0, string_literal_output.read())
 
-def create_tab(name):
-    output_frame = ttk.Frame(output_tabs)
-    set_resizable_inner(output_frame)
-    output_tabs.add(output_frame, text=name)
-    output_box = ScrolledText(output_frame)
-    set_resizable_inner(output_box)
-    return output_box
+def create_text_tab(notebook, name):
+    frame = ttk.Frame(notebook)
+    set_resizable_inner(frame)
+    notebook.add(frame, text=name)
+    box = ScrolledText(frame)
+    set_resizable_inner(box)
+    return box
 
 def set_resizable_inner(widget):
     widget.grid_columnconfigure(0, weight=1)
     widget.grid_rowconfigure(0, weight=1)
     widget.grid(column=0, row=0, sticky=STICK_ALL_SIDES)
+
+def selected_config_changed(*args):
+    global unsaved_config
+    global unsaved_config_name
+    unsaved_config = copy.deepcopy(config)
+    unsaved_config_name = selected_config.get()
+    populate_config_tab()
+
+def create_new_config():
+    global unsaved_config
+    global unsaved_config_name
+    unsaved_config_name = "new"
+    unsaved_config[unsaved_config_name] = [
+                {
+                    "name": "FieldName",
+                    "length": 1
+                }
+        ]
+    populate_config_tab()
+
+def create_new_field():
+    global unsaved_config
+    global unsaved_config_name
+    unsaved_config[unsaved_config_name].append({
+        "name": "FieldName",
+        "length": 1
+    })
+
+def save_config():
+    json.dump(unsaved_config, open(config_file, "w+"), sort_keys=True, indent=2)
+    selected_config.set(unsaved_config_name)
+
+def populate_config_tab():
+    for child in config_edit_frame.winfo_children():
+        child.destroy()
+    i=0
+
+    tk.Label(config_edit_frame, text="Config Name: ").grid(column=0, row=i, sticky=tk.E)
+
+    config_name_entry = tk.Entry(config_edit_frame, width=50)
+    config_name_entry.grid(column=1, row=i, sticky=tk.E + tk.W)
+    config_name_entry.insert(0, unsaved_config_name)
+
+    new_config_button = tk.Button(config_edit_frame, text="New Configuration", command=create_new_config)
+    new_config_button.grid(column=2, row=i, sticky=tk.E + tk.W)
+    i+=1
+
+    tk.Label(config_edit_frame, text="Field Name").grid(column=0, row=i)
+    tk.Label(config_edit_frame, text="Field Length").grid(column=1, row=i)
+    i+=1
+    for field in unsaved_config[unsaved_config_name]:
+        name = tk.Entry(config_edit_frame, width=50)
+        name.grid(column=0, row=i, sticky=tk.E+tk.W)
+        name.insert(0, field["name"])
+
+        length = tk.Entry(config_edit_frame)
+        length.grid(column=1, row=i, sticky=tk.E+tk.W)
+        length.insert(0, field["length"])
+
+        delete = tk.Button(config_edit_frame, text="Delete")
+        delete.grid(column=2, row=i, sticky=tk.E+tk.W)
+        i+=1
+
+    new_field = tk.Button(config_edit_frame, text="New Field")
+    new_field.grid(column=0, row=i, sticky=tk.E+tk.W)
+    i += 1
+
+    new_field = tk.Button(config_edit_frame, text="Save")
+    new_field.grid(column=0, row=i, sticky=tk.E + tk.W)
 
 root = tk.Tk()
 
@@ -138,27 +209,38 @@ root.grid_rowconfigure(0, weight=1)
 root.grid_rowconfigure(1, weight=1)
 root.grid_rowconfigure(2, weight=1)
 
-flat_input_box = ScrolledText(root)
-flat_input_box.grid(row=0, columnspan=3, sticky=STICK_ALL_SIDES)
+input_tabs = ttk.Notebook(root)
+input_tabs.grid(row=0, columnspan=3, sticky=STICK_ALL_SIDES)
+input_tabs.grid_rowconfigure(0, weight=1)
+input_tabs.grid_columnconfigure(0, weight=1)
 
-button_parse = tk.Button(root, text="PARSE", command=parse).grid(row=1, column=0, sticky=tk.E+tk.W)
+flat_input_box = create_text_tab(input_tabs, "Input")
 
-#tk.Label(root, text="Layout:").grid(row=2, column=0, sticky=tk.W)
+config_edit_frame = ttk.Frame(input_tabs)
+config_edit_frame.grid(column=0, row=0, sticky=STICK_ALL_SIDES)
+input_tabs.add(config_edit_frame, text="Configuration")
+
+button_parse = tk.Button(root, text="Parse", command=parse).grid(row=1, column=0, sticky=tk.E+tk.W)
+
+tk.Label(root, text="Layout:").grid(row=1, column=1, sticky=tk.E)
 
 options = list(config.keys())
 selected_config = tk.StringVar(root)
 selected_config.set(options[0])
+selected_config.trace("w", selected_config_changed)
 option_menu = tk.OptionMenu(root, selected_config, *options)
-option_menu.grid(row=1, column=1, sticky=tk.E+tk.W)
+option_menu.grid(row=1, column=2, sticky=tk.E+tk.W)
+
+selected_config_changed()
 
 output_tabs = ttk.Notebook(root)
 output_tabs.grid(row=2, columnspan=3, sticky=STICK_ALL_SIDES)
 output_tabs.grid_rowconfigure(0, weight=1)
 output_tabs.grid_columnconfigure(0, weight=1)
 
-friendly_output_box = create_tab("Friendly")
-string_output_box = create_tab("String")
-csv_output_box = create_tab("CSV")
-json_output_box = create_tab("JSON")
+friendly_output_box = create_text_tab(output_tabs, "Friendly")
+string_output_box = create_text_tab(output_tabs, "String")
+csv_output_box = create_text_tab(output_tabs, "CSV")
+json_output_box = create_text_tab(output_tabs, "JSON")
 
 root.mainloop()
