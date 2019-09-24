@@ -1,0 +1,5 @@
+string test = "";
+// [5] Field1
+test += "";
+// [3] Field2
+test += "";

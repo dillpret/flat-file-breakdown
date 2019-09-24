@@ -4,8 +4,6 @@
     <list default="true" id="8cbf6578-ebc0-4cef-b3dc-70749f10dc0d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flat_file_breakdown.py" beforeDir="false" afterPath="$PROJECT_DIR$/flat_file_breakdown.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/output.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/output.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +40,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.flat_file_breakdown">
+  <component name="RunManager" selected="Python.PyInstaller">
     <configuration name="AckHeader" type="PythonConfigurationType" factoryName="Python">
       <module name="flat-file-breakdown" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -127,9 +125,9 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="flat_file_breakdown" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="PyInstaller" type="PythonConfigurationType" factoryName="Python">
       <module name="flat-file-breakdown" />
-      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_OPTIONS" value="-m PyInstaller" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
@@ -139,8 +137,8 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flat_file_breakdown.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="flat_file_breakdown.py -y -F -n &quot;FlatFileHelper&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -149,7 +147,7 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.flat_file_breakdown" />
+      <item itemvalue="Python.PyInstaller" />
       <item itemvalue="Python.AckItem" />
       <item itemvalue="Python.AckHeader" />
       <item itemvalue="Python.AckTrailer" />

@@ -1,6 +1,7 @@
 import copy
 import json
 import csv
+import os
 
 import tkinter as tk
 from tkinter import ttk
@@ -8,14 +9,31 @@ from tkinter.scrolledtext import ScrolledText
 
 STICK_ALL_SIDES = tk.N + tk.S + tk.E + tk.W
 
-# Load config from JSON
 config_file = "config.json"
-f = open(config_file, "r", encoding="utf-8")
-config = json.load(f)
-f.close()
+
+if os.path.exists(config_file):
+    # Load config from JSON
+    f = open(config_file, "r", encoding="utf-8")
+    config = json.load(f)
+    f.close()
+else:
+    # Create config file
+    config = {
+        "test": [
+            {
+                "name" : "Field1",
+                "length" : 5
+            },
+            {
+                "name" : "Field2",
+                "length" : 3
+            }
+        ]
+    }
+    json.dump(config, open(config_file, "w+"), sort_keys=True, indent=2)
+
 
 def parse():
-    print("PARSE")
     input_text = flat_input_box.get(1.0, tk.END)
     
     split = split_flat_file(input_text)
