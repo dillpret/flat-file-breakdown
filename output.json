@@ -1,17 +1,12 @@
 [
   {
-    "length": 2,
-    "name": "RecordIdentifier",
-    "value": "04"
+    "length": 5,
+    "name": "Field1",
+    "value": "fghij"
   },
   {
-    "length": 256,
-    "name": "HashTotal",
-    "value": "                                                                                                                                                                                                                                                                "
-  },
-  {
-    "length": 62,
-    "name": "Filler",
-    "value": "                                                              "
+    "length": 3,
+    "name": "Field2",
+    "value": "456"
   }
 ]

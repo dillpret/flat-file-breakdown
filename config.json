@@ -1,4 +1,14 @@
 {
+	"test": [
+		{
+			"name" : "Field1",
+			"length" : 5
+		},
+		{
+			"name" : "Field2",
+			"length" : 3
+		}
+	],
 	"ackHeader" : [
 		{
 			"name" : "RecordIdentifier",

@@ -3,22 +3,27 @@ import click
 import json
 import csv
 
+import tkinter as tk
+from tkinter.scrolledtext import ScrolledText
 
-@click.command()
-@click.option('--input_file',
-              help='The relative file path of the input file.',
-              default="input.txt")
-@click.option('--config_file',
-              help='The relative file path of the configuration.',
-              default="config.json")
-@click.option('--config_key',
-              help='The key used to locate the record configuration.',
-              default="record")
-@click.option('--output_file',
-              help='The relative file path of the output file (this will be overwritten if it exists).',
-              default="output.csv")
-def split_flat_file(input_file, config_file, output_file, config_key):
+root = tk.Tk()
+
+def parse():
+    print("PARSE")
+    input_text = flat_input_box.get(1.0, tk.END)
+
+    output_text = split_flat_file(input_text)
+
+    output_box.delete(1.0, tk.END)
+    output_box.insert(1.0, output_text)
+
+def split_flat_file(flat_file_string):
     """Generates a CSV file from a flat file based on configured field lengths."""
+    config_file = "config.json"
+    config_key = "test"
+
+    output_file = "output.csv"
+
     # Load config from JSON
     f = open(config_file, "r", encoding="utf-8")
     config = json.load(f)
@@ -31,12 +36,9 @@ def split_flat_file(input_file, config_file, output_file, config_key):
     # Write header
     writer.writerow(field["name"] for field in config[config_key])
 
-    # Open input file
-    flat_file = open(input_file)
-
     # Read each property of each row, and write to the output CSV
     json_output = copy.deepcopy(config[config_key])
-    for row in flat_file:
+    for row in flat_file_string.splitlines():
         i = 0
         for field in json_output:
             field["value"] = row[i:i + field["length"]]
@@ -45,7 +47,6 @@ def split_flat_file(input_file, config_file, output_file, config_key):
 
     # Write JSON output (of last row)
     json.dump(json_output, open("output.json", "w+"), sort_keys=True, indent=2)
-    flat_file.close()
 
     # Write string literal output (of last row)
     string_literal_output = open("output.txt", "w+")
@@ -54,6 +55,24 @@ def split_flat_file(input_file, config_file, output_file, config_key):
         string_literal_output.write("// [" + str(field["length"]) + "] " + field["name"] + "\n")
         string_literal_output.write(config_key + " += \"" + field["value"] + "\";\n")
 
+    return json.dumps(json_output, sort_keys=True, indent=2)
 
-if __name__ == '__main__':
-    split_flat_file()
+root.title("Flat File Helper")
+
+root.grid_columnconfigure(0, weight=1)
+root.grid_columnconfigure(1, weight=1)
+root.grid_columnconfigure(2, weight=1)
+
+root.grid_rowconfigure(0, weight=1)
+root.grid_rowconfigure(1, weight=1)
+root.grid_rowconfigure(2, weight=1)
+
+flat_input_box = ScrolledText(root)
+flat_input_box.grid(row=0, column=0, columnspan=3, sticky=tk.N + tk.S + tk.E + tk.W)
+
+button_parse = tk.Button(root, text="Parse", command=parse).grid(row=1, column=0, sticky=tk.W)
+
+output_box = ScrolledText(root)
+output_box.grid(row=2, column=0, columnspan=3, sticky=tk.N + tk.S + tk.E + tk.W)
+
+root.mainloop()

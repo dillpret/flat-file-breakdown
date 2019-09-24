@@ -1,7 +1,5 @@
-string ackSecurityRecord = "";
-// [2] RecordIdentifier
-ackSecurityRecord += "04";
-// [256] HashTotal
-ackSecurityRecord += "                                                                                                                                                                                                                                                                ";
-// [62] Filler
-ackSecurityRecord += "                                                              ";
+string test = "";
+// [5] Field1
+test += "fghij";
+// [3] Field2
+test += "456";
