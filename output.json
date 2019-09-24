@@ -1,12 +1,42 @@
 [
   {
-    "length": 5,
-    "name": "Field1",
-    "value": "fghij"
+    "length": 2,
+    "name": "RecordIdentifier",
+    "value": "ab"
   },
   {
-    "length": 3,
-    "name": "Field2",
-    "value": "456"
+    "length": 10,
+    "name": "ClientProfileNumber",
+    "value": "cde123"
+  },
+  {
+    "length": 24,
+    "name": "FileSequenceNumber",
+    "value": ""
+  },
+  {
+    "length": 2,
+    "name": "FileType",
+    "value": ""
+  },
+  {
+    "length": 16,
+    "name": "NominatedChargesAccountNumber",
+    "value": ""
+  },
+  {
+    "length": 16,
+    "name": "ChargesAccountNumber",
+    "value": ""
+  },
+  {
+    "length": 30,
+    "name": "StatementNarrative",
+    "value": ""
+  },
+  {
+    "length": 250,
+    "name": "Filler",
+    "value": ""
   }
 ]
