@@ -117,7 +117,7 @@ def create_tab(name):
     output_frame = ttk.Frame(output_tabs)
     set_resizable_inner(output_frame)
     output_tabs.add(output_frame, text=name)
-    output_box = ScrolledText(output_frame)
+    output_box = ScrolledText(output_frame, height=5)
     set_resizable_inner(output_box)
     return output_box
 
@@ -138,7 +138,7 @@ root.grid_rowconfigure(0, weight=1)
 root.grid_rowconfigure(1, weight=1)
 root.grid_rowconfigure(2, weight=1)
 
-flat_input_box = ScrolledText(root)
+flat_input_box = ScrolledText(root, height=5)
 flat_input_box.grid(row=0, columnspan=3, sticky=STICK_ALL_SIDES)
 
 button_parse = tk.Button(root, text="PARSE", command=parse).grid(row=1, column=0, sticky=tk.E+tk.W)
